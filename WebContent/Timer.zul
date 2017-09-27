@@ -1,0 +1,31 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Timer Demo" border="normal"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('tw.studio.jimmy.lab.JimmyLab')"
+		width="500px">
+		<timer delay="@load(vm.dalay)" repeats="true"
+			onTimer="@command('tickTack')" running="@load(vm.isRunning)" />
+		<vlayout>
+			<label value="@load(vm.date)" />
+			<hlayout>
+				<label value="Total: " />
+				<intbox value="@bind(vm.total)" />
+			</hlayout>
+			<hlayout>
+				<label value="Status: " />
+				<label value="@load(vm.runningStatus)" />
+			</hlayout>
+			<hlayout>
+				<label value="Count:" />
+				<label value="@load(vm.count)" />
+			</hlayout>
+			<progressmeter value="@load(vm.progress)" width="300px" />
+		</vlayout>
+		<separator />
+		<button label="start" onClick="@command('start')" />
+		<button label="stop" onClick="@command('stop')" />
+		<button label="重新計時" onClick="@command('reload')" />
+	</window>
+
+</zk>
